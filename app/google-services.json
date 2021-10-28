@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1077497971660",
+    "project_id": "food-sharing-app-c264c",
+    "storage_bucket": "food-sharing-app-c264c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077497971660:android:d4e82bc9ebcfac1c8a9369",
+        "android_client_info": {
+          "package_name": "com.jaspreet.firebaselogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077497971660-k3sf10cp25vi852prnubm7n8dioki26q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaspreet.firebaselogin",
+            "certificate_hash": "c5c98d5139a90d2627dee2ad50b8c1b916a249be"
+          }
+        },
+        {
+          "client_id": "1077497971660-58lqb9gfmdbbhkpanu71mkke6q6t45p3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwGXbOv7PH-ADQnI1tVkpfFlirbGLyUmA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077497971660-58lqb9gfmdbbhkpanu71mkke6q6t45p3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
