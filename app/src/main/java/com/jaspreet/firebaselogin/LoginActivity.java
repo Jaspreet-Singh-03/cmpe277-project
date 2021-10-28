@@ -27,6 +27,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.jaspreet.lab3.NavigationDrawerActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity : ";
@@ -88,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+       // updateUI(currentUser);
     }
 
     private void googleSignIn() {
@@ -166,7 +167,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void updateUI(FirebaseUser user){
         if(user!=null) {
-            Intent intent = new Intent(this, MainActivity.class);
+           // Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, NavigationDrawerActivity.class);
             startActivity(intent);
         }
     }

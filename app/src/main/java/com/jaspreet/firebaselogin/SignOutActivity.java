@@ -8,15 +8,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class SignOutActivity extends AppCompatActivity {
     private TextView heading;
     private Button signOutBtn;
     private RetrofitService service;
@@ -24,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        heading = findViewById(R.id.textView);
+        setContentView(R.layout.signout_layout);
+        heading = findViewById(R.id.mainTextView);
         signOutBtn = findViewById(R.id.google_signout_button);
         signOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<RetroModel>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignOutActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });
     }

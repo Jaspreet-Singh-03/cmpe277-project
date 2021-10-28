@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jaspreet.lab2.EnterDetailsActivity"
+    android:background="@color/custom_blue">
+
+    <TextView
+        android:id="@+id/tv_get_info_heading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_mid"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginEnd="@dimen/margin_right_mid"
+        android:text="@string/tv_get_info_heading"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <EditText
+        android:id="@+id/et_enter_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_mid"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginEnd="@dimen/margin_right_mid"
+        android:hint="Enter Your Name"
+        android:minHeight="@dimen/min_height"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_get_info_heading"></EditText>
+
+    <EditText
+        android:id="@+id/et_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_mid"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginEnd="@dimen/margin_right_mid"
+        android:ems="10"
+        android:hint="Enter Food Quantity"
+        android:inputType="number"
+        android:minHeight="@dimen/min_height"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_enter_name" />
+
+    <EditText
+        android:id="@+id/et_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_mid"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginEnd="@dimen/margin_right_mid"
+        android:ems="10"
+        android:hint="Enter Phone Number"
+        android:inputType="number"
+        android:minHeight="@dimen/min_height"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_quantity" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_mid"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginEnd="@dimen/margin_right_mid"
+        android:ems="10"
+        android:hint="Current Location"
+        android:minHeight="@dimen/min_height"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_number" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_left_mid"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginEnd="@dimen/margin_right_mid"
+        android:minHeight="@dimen/min_height"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_address"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_mid"
+        android:height="@dimen/min_height"
+        android:text="Reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="@dimen/min_height"
+        app:layout_constraintStart_toEndOf="@+id/btn_submit"
+        app:layout_constraintTop_toBottomOf="@+id/date_layout" />
+
+    <Button
+        android:id="@+id/btn_update_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_mid"
+        android:minHeight="@dimen/min_height"
+        android:text="Update Location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top_mid"
+        android:minHeight="@dimen/min_height"
+        android:height="@dimen/min_height"
+        android:text="Submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_reset"
+        app:layout_constraintTop_toBottomOf="@+id/date_layout" />
+
+    <LinearLayout
+        android:id="@+id/date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/min_height"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_top_small"
+        android:layout_marginLeft="@dimen/margin_left_mid"
+        android:layout_marginRight="@dimen/margin_right_mid"
+        app:layout_constraintTop_toBottomOf="@+id/spinner1">
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size_medium"
+            android:layout_marginEnd="@dimen/margin_right_small"
+            android:text="Date" />
+
+        <Button
+            android:id="@+id/btPickDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Pick Date" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
