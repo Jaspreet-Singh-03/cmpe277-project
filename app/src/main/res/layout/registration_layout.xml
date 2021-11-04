@@ -29,6 +29,15 @@
         app:layout_constraintTop_toBottomOf="@+id/registartionTVHeading">
 
         <EditText
+            android:id="@+id/register_user_name"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:inputType= "textPersonName"
+            android:hint="Enter your name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
             android:id="@+id/register_user_email"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"

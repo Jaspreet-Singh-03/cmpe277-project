@@ -34,6 +34,7 @@ public class ElementListAdapter extends RecyclerView.Adapter<RecycleViewHolder> 
         holder.getTv_phoneNumber().setText(viewAllData.get(position).getPhoneNumber());
         holder.getTv_pickupDate().setText(viewAllData.get(position).getPickupDate());
         holder.getTv_addr().setText(viewAllData.get(position).getAddress());
+        holder.getTv_username().setText(viewAllData.get(position).getUsername());
     }
 
     @Override

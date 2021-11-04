@@ -11,9 +11,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jaspreet.firebaselogin.SignOutActivity;
 import com.jaspreet.lab2.EnterDetailsActivity;
 import com.jaspreet.lab2.LandingPageActivity;
@@ -25,6 +28,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
     DrawerLayout drawer;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
+    TextView nav_username, nav_email_id;
 
        @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,18 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this::onOptionsItemSelected);
+        nav_username = navigationView.getHeaderView(0).findViewById(R.id.nav_username);
+        nav_email_id = navigationView.getHeaderView(0).findViewById(R.id.nav_email_id);
+        setUser();
+   }
+
+   public void setUser(){
+       FirebaseAuth mAuth = FirebaseAuth.getInstance();
+       FirebaseUser currentUser = mAuth.getCurrentUser();
+       String username = currentUser.getDisplayName();
+       String emailId = currentUser.getEmail();
+       nav_username.setText(username);
+       nav_email_id.setText(emailId);
    }
 
     @Override

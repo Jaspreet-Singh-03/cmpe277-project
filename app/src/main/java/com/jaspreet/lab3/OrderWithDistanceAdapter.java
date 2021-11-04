@@ -38,6 +38,7 @@ public class OrderWithDistanceAdapter extends RecyclerView.Adapter<RecyclerListV
         holder.getTv_phone_number().setText(String.valueOf(model.getPhoneNumber()));
         holder.getTv_pickup_date().setText(String.valueOf(model.getPickupDate()));
         holder.getTv_address().setText(String.valueOf(model.getAddress()));
+        holder.getTv_username().setText(String.valueOf(model.getUsername()));
     }
 
     @Override

@@ -55,11 +55,11 @@ public class LandingPageActivity extends AppCompatActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragment_layout, viewDetails)
-                        .addToBackStack(null)
                         .commit();
             }
         });
 
+        DatabaseHelper.getInstance().getUserData();
     }
 
     @Override

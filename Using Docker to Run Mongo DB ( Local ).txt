@@ -1,0 +1,32 @@
+Using Docker to Run Mongo DB ( Local )
+
+Step 0 : Create a account on docker hub and login
+docker login 		// enter username and pass used to create dockerhub id 
+
+Step 1 : 
+docker pull mongo
+
+Step 2 : 
+docker run -dit --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=user -e MONGO_INITDB_ROOT_PASSWORD=pass mongo:latest
+
+Step 3 :  
+docker exec -it mongodb bash
+
+Step 4 : Login in the mongodb instance using
+
+mongo -u user -p pass
+
+MongoDB Handy Commands
+
+use cmpe277 		// this will create the new database named cmpe277 and switch to it
+show dbs
+show collections
+db.<collections>.find()  // change <collection> with the name, example db.model.find()
+
+Docker Handy Commands
+
+docker images -> to check the the current download images
+docker ps -a -> to check running containers
+docker stop <container name> -> stop the running container
+docker rmi <container name> -> remove the downlaoded image
+docker rm -f <container name> -> remove the container forcefully

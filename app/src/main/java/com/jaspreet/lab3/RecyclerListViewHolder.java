@@ -17,6 +17,8 @@ public class RecyclerListViewHolder extends RecyclerView.ViewHolder {
     TextView tv_address;
     TextView tv_distance;
 
+    TextView tv_username;
+
     public RecyclerListViewHolder(@NonNull View itemView){
         super(itemView);
         tv_distance = itemView.findViewById(R.id.list_tv_distance);
@@ -26,6 +28,7 @@ public class RecyclerListViewHolder extends RecyclerView.ViewHolder {
         tv_pickup_date = itemView.findViewById(R.id.list_tv_pickupDate);
         tv_phone_number = itemView.findViewById(R.id.list_tv_phoneNumber);
         tv_address = itemView.findViewById(R.id.list_tv_addr);
+        tv_username = itemView.findViewById(R.id.list_tv_username);
     }
 
     public TextView getTv_customer_name() {
@@ -52,7 +55,7 @@ public class RecyclerListViewHolder extends RecyclerView.ViewHolder {
         return tv_address;
     }
 
-    public TextView getTv_distance() {
-        return tv_distance;
-    }
+    public TextView getTv_distance() { return tv_distance; }
+
+    public TextView getTv_username() { return tv_username; }
 }

@@ -20,7 +20,7 @@ public class ViewDetailsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        databaseHelper = new DatabaseHelper(getContext());
+        databaseHelper = DatabaseHelper.getInstance();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ViewDetailsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        recyclerView.setAdapter(new ElementListAdapter(databaseHelper.getAll()));
+        recyclerView.setAdapter(new ElementListAdapter(databaseHelper.getUserData()));
         return view;
     }
 }

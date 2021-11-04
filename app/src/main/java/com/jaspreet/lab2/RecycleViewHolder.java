@@ -16,6 +16,7 @@ public class RecycleViewHolder extends RecyclerView.ViewHolder {
     TextView tv_pickupDate;
     TextView tv_phoneNumber;
     TextView tv_addr;
+    TextView tv_username;
 
 
     public RecycleViewHolder(@NonNull View itemView){
@@ -27,6 +28,7 @@ public class RecycleViewHolder extends RecyclerView.ViewHolder {
         tv_pickupDate = itemView.findViewById(R.id.tv_pickupDate);
         tv_phoneNumber = itemView.findViewById(R.id.tv_phoneNumber);
         tv_addr = itemView.findViewById(R.id.tv_addr);
+        tv_username = itemView.findViewById(R.id.tv_username);
     }
 
     public TextView getTv_id() {
@@ -54,6 +56,8 @@ public class RecycleViewHolder extends RecyclerView.ViewHolder {
     }
 
     public TextView getTv_addr() { return tv_addr; }
+
+    public TextView getTv_username() { return tv_username; }
 
  }
 

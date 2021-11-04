@@ -2,20 +2,33 @@ package com.jaspreet.lab2;
 
 import android.location.Location;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 public class ElementModel {
 
-    int id;
+    @SerializedName("id")
+    String id;
+    @SerializedName("username")
+    String username;
+    @SerializedName("name")
     String name;
+    @SerializedName("foodType")
     String foodType;
+    @SerializedName("quantity")
     int quantity;
+    @SerializedName("pickupDate")
     String pickupDate;
+    @SerializedName("phoneNumber")
     String phoneNumber;
+    @SerializedName("address")
     String address;
+    @SerializedName("location")
     Location location;
 
-    public ElementModel(int id, String name, String foodType, int quantity, String pickupDate, String phoneNumber, String address, Location location){
+    public ElementModel(String username, String id, String name, String foodType, int quantity, String pickupDate, String phoneNumber, String address, Location location){
+        this.username = username;
         this.id = id;
         this.name = name;
         this.foodType = foodType;
@@ -25,12 +38,15 @@ public class ElementModel {
         this.address = address;
         this.location = location;
     }
+    public String getUsername() { return username; }
 
-    public int getId() {
+    public void setUsername(String username) { this.username = username; }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -80,28 +96,30 @@ public class ElementModel {
 
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ElementModel that = (ElementModel) o;
+        return id == that.id && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
     public String toString() {
         return "ElementModel{" +
-                "id=" + id +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", foodType='" + foodType + '\'' +
                 ", quantity=" + quantity +
                 ", pickupDate='" + pickupDate + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
+                ", location=" + location +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ElementModel that = (ElementModel) o;
-        return id == that.id && quantity == that.quantity && Objects.equals(name, that.name) && Objects.equals(foodType, that.foodType) && Objects.equals(pickupDate, that.pickupDate) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(address, that.address);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, foodType, quantity, pickupDate, phoneNumber, address);
     }
 }

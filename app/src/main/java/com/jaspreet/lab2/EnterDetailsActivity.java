@@ -37,6 +37,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.jaspreet.firebaselogin.R;
 
 import java.text.SimpleDateFormat;
@@ -59,6 +60,7 @@ public class EnterDetailsActivity extends AppCompatActivity implements SubmitDia
     public static final int FAST_UPDATE_INTERVAL = 3;
     int count;
     public static Location currentLocation;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,9 @@ public class EnterDetailsActivity extends AppCompatActivity implements SubmitDia
         dropDown = findViewById(R.id.spinner1);
         tv_address = findViewById(R.id.tv_address);
         tvDate.setText(currentDate());
+        mAuth = FirebaseAuth.getInstance();
+        et_enter_name.setText(mAuth.getCurrentUser().getDisplayName());
+
         setupDropDown();
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -113,7 +118,7 @@ public class EnterDetailsActivity extends AppCompatActivity implements SubmitDia
             }
         });
 
-        databaseHelper = new DatabaseHelper(EnterDetailsActivity.this);
+        databaseHelper = DatabaseHelper.getInstance();
         count = 0;
     }
 
@@ -195,7 +200,9 @@ public class EnterDetailsActivity extends AppCompatActivity implements SubmitDia
 
         ElementModel newElement;
         try{
-            newElement = new ElementModel(-1, name, foodType, quantity, pickupDate,phoneNumber , address, currentLocation);
+            String id = "-1";
+            String username = mAuth.getCurrentUser().getEmail().toString();
+            newElement = new ElementModel(username, id ,name, foodType, quantity, pickupDate,phoneNumber , address, currentLocation);
             databaseHelper.addOne(newElement);
             Toast.makeText(this, "Submission Successful",Toast.LENGTH_SHORT).show();
             count++;

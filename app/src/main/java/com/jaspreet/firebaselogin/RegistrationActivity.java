@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegistrationActivity extends AppCompatActivity {
     private static final String TAG = "RegistrationActivity : ";
@@ -29,6 +30,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText email;
     private EditText password1;
     private EditText password2;
+    private EditText name;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
         email = findViewById(R.id.register_user_email);
         password1 = findViewById(R.id.register_user_password1);
         password2 = findViewById(R.id.register_user_password2);
+        name = findViewById(R.id.register_user_name);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +66,9 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = this.email.getText().toString();
         String password1 = this.password1.getText().toString();
         String password2 = this.password2.getText().toString();
+        String username = this.name.getText().toString();
 
-        if(email.isEmpty() || password1.isEmpty() || password2.isEmpty()){
+        if(email.isEmpty() || password1.isEmpty() || password2.isEmpty() || username.isEmpty() ){
             makeToast("Please fill up all the required fields");
             return;
         }
@@ -82,6 +86,9 @@ public class RegistrationActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            if(user!=null){
+                                setDisplayName(user, username);
+                            }
                             makeToast("Registartion Successful");
                             resetText();
                             moveToLogin();
@@ -94,13 +101,31 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
     }
 
+    private void setDisplayName(FirebaseUser user, String username) {
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(username)
+                .build();
+
+        user.updateProfile(profileUpdates)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User profile updated.");
+                        }
+                    }
+                });
+    }
+
     public void resetText(){
         this.email.setText("");
         this.password1.setText("");
         this.password2.setText("");
+        this.name.setText("");
         this.email.setHint("Enter your email");
         this.password1.setHint("Enter your password");
         this.password2.setHint("Confirm your password");
+        this.name.setHint("Enter your name");
     }
 
     public void hideKeyboard(){

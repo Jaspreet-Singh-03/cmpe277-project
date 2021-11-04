@@ -69,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         searchLocation = findViewById(R.id.btn_search_location);
         viewAsList = findViewById(R.id.btn_view_list);
         searchBox = findViewById(R.id.search_box);
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = DatabaseHelper.getInstance();
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getLastLocation();
         updateLocation.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +100,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        databaseHelper.getAllData();
 
     }
 
@@ -148,7 +150,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             showSnackBar("No Network, please check network connection", true);
             return;
         }
-        List<OrderWithDistance> orders = LoadData.getInstance().getOrders(databaseHelper.getAll(),query, currentLocation);
+        List<OrderWithDistance> orders = LoadData.getInstance().getOrders(databaseHelper.getAllData(),query, currentLocation);
         if(query.isEmpty())
             showSnackBar("Search Query is Empty, showing all results", true);
         else
@@ -167,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             showSnackBar("No Network, please check network connection", true);
             return;
         }
-        List<OrderWithDistance> orders = LoadData.getInstance().getOrders(databaseHelper.getAll(),query, currentLocation);
+        List<OrderWithDistance> orders = LoadData.getInstance().getOrders(databaseHelper.getAllData(),query, currentLocation);
         Intent intent = new Intent(this, ListViewActivity.class);
         startActivity(intent);
     }

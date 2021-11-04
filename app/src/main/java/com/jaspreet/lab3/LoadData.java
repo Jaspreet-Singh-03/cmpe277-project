@@ -2,7 +2,6 @@ package com.jaspreet.lab3;
 
 import android.location.Location;
 
-import com.jaspreet.lab2.DatabaseHelper;
 import com.jaspreet.lab2.ElementModel;
 import com.jaspreet.lab2.FoodType;
 import com.jaspreet.lab2.OrderWithDistance;
@@ -10,11 +9,8 @@ import com.jaspreet.lab2.OrderWithDistance;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class LoadData {
 
